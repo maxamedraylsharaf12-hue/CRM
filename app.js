@@ -28,7 +28,9 @@
   }
 
   heroButton.addEventListener("click", openModal);
-  plusButton.addEventListener("click", openModal);
+  if (plusButton) {
+    plusButton.addEventListener("click", openModal);
+  }
 
   closeButtons.forEach(function (btn) {
     btn.addEventListener("click", closeModal);

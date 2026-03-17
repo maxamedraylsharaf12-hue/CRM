@@ -657,6 +657,20 @@ body {
   padding-bottom: 10px;
 }
 
+.ai-screenshot-wrap {
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.ai-screenshot {
+  width: 100%;
+  max-width: 560px;
+  border-radius: 18px;
+  border: 1px solid rgba(148, 163, 253, 0.25);
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.4);
+}
+
 .scroll::-webkit-scrollbar {
   width: 4px;
 }
