@@ -15,7 +15,7 @@
   --radius-lg: 18px;
   --radius-xl: 22px;
   --transition-fast: 0.15s ease-out;
-  --nav-height: 72px;
+  --nav-height: 64px;
 }
 
 * {
@@ -35,20 +35,22 @@ body {
   background: radial-gradient(circle at top, #18233a 0, #050917 55%);
   color: var(--text-main);
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 16px;
+  align-items: stretch;
+  justify-content: stretch;
+  padding: 0;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .app {
-  width: 100%;
-  max-width: 420px;
-  height: 780px;
+  width: 100vw;
+  height: 100vh;
+  max-width: 100vw;
   max-height: 100vh;
   background: linear-gradient(180deg, #050917 0%, #050917 45%, #03040b 100%);
-  border-radius: 32px;
-  box-shadow: var(--shadow-soft);
-  border: 1px solid #151b2c;
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -433,6 +435,133 @@ body {
   font-size: 11px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
+}
+
+/* Criminal database cards */
+.criminal-header {
+  margin-top: 14px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.criminal-search {
+  flex: 1;
+  max-width: 430px;
+  position: relative;
+}
+
+.criminal-search .search-icon {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: #000;
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.8);
+  transform: translateY(-50%);
+}
+
+.criminal-search input {
+  width: 100%;
+  padding: 10px 12px 10px 36px;
+  border-radius: 12px;
+  border: 1px solid rgba(148, 163, 253, 0.35);
+  background: rgba(15, 23, 42, 0.75);
+  color: var(--text-main);
+}
+
+.criminal-search input::placeholder {
+  color: rgba(226, 232, 240, 0.6);
+}
+
+.criminal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.criminal-card {
+  border-radius: 18px;
+  overflow: hidden;
+  background: linear-gradient(150deg, rgba(15, 23, 42, 0.9) 0%, rgba(10, 15, 28, 0.9) 100%);
+  border: 1px solid rgba(148, 163, 253, 0.22);
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+}
+
+.criminal-card-header {
+  height: 112px;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.06), rgba(0, 0, 0, 0.35)), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='160' viewBox='0 0 320 160'%3E%3Crect width='320' height='160' fill='%232a2e3b'/%3E%3Cpath d='M0 120c80-50 160-50 240 0s160 50 240 0V160H0z' fill='%236d7cff' opacity='0.35'/%3E%3Cpath d='M0 80c80-50 160-50 240 0s160 50 240 0V120H0z' fill='%23ffffff' opacity='0.08'/%3E%3C/svg%3E") center/cover no-repeat;
+  position: relative;
+}
+
+.criminal-status {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.criminal-status--low {
+  background: rgba(34, 197, 94, 0.9);
+}
+
+.criminal-status--medium {
+  background: rgba(245, 158, 11, 0.9);
+}
+
+.criminal-status--high {
+  background: rgba(239, 68, 68, 0.9);
+}
+
+.criminal-card-body {
+  padding: 12px 14px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.criminal-name {
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.criminal-alias {
+  font-size: 11px;
+  color: rgba(226, 232, 240, 0.75);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.criminal-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: rgba(226, 232, 240, 0.7);
+}
+
+.criminal-row strong {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.criminal-details {
+  font-size: 11px;
+  color: rgba(226, 232, 240, 0.75);
+  line-height: 1.3;
+  max-height: 3.9em;
+  overflow: hidden;
 }
 
 .chip {
@@ -1187,28 +1316,28 @@ body {
 /* Bottom navigation */
 .nav {
   height: var(--nav-height);
-  padding: 8px 18px 18px;
+  padding: 6px 18px 14px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: transparent;
-  border-top: none;
-  box-shadow: 0 -18px 40px rgba(15, 23, 42, 0.9);
+  background: rgba(115, 44, 44, 0.18);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 -14px 32px rgba(15, 23, 42, 0.85);
 }
 
 .nav-inner {
   width: 100%;
   max-width: 360px;
-  height: 56px;
-  background: #ffffff;
+  height: 50px;
+  background: #732C2C;
   border-radius: 999px;
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.12);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 24px;
+  padding: 0 22px;
   position: relative;
-  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.28);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55);
 }
 
 .nav-item {
@@ -1219,7 +1348,7 @@ body {
   justify-content: center;
   gap: 3px;
   font-size: 10px;
-  color: rgba(15, 23, 42, 0.45);
+  color: #000;
   cursor: pointer;
   z-index: 1;
 }
@@ -1233,7 +1362,7 @@ body {
   width: 20px;
   height: 20px;
   border-radius: 999px;
-  border: 1.6px solid rgba(37, 99, 235, 0.9);
+  border: 1.6px solid #000;
   position: relative;
 }
 
@@ -1243,16 +1372,26 @@ body {
 }
 
 .nav-icon--files {
-  transform: skewX(-7deg);
+  transform: none;
+  border: none;
+  background: #000;
 }
 
-.nav-icon--files::before {
-  width: 8px;
+.nav-item--records .nav-icon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 42%;
+  height: 42%;
+  background: #ed1c24;
+  border-radius: 18%;
+  transform: translate(-50%, -50%);
 }
 
 .nav-icon--alert {
   border-radius: 999px;
-  border-color: rgba(248, 250, 252, 0.9);
+  border-color: #000;
 }
 
 .nav-icon--alert::before {
@@ -1260,7 +1399,7 @@ body {
   height: auto;
   width: 0;
   border-radius: 999px;
-  border-left: 2px solid rgba(248, 250, 252, 0.9);
+  border-left: 2px solid #000;
   background: none;
 }
 
@@ -1270,6 +1409,7 @@ body {
   bottom: 4px;
   left: 50%;
   transform: translateX(-50%);
+  background: #000;
 }
 
 .nav-icon--user {
@@ -1283,7 +1423,7 @@ body {
   left: 4px;
   right: 4px;
   border-radius: 999px;
-  background: rgba(148, 163, 253, 0.9);
+  background: #000;
 }
 
 .nav-icon--user::after {
@@ -1293,7 +1433,7 @@ body {
   bottom: 3px;
   height: 5px;
   border-radius: 999px;
-  background: rgba(129, 140, 248, 0.7);
+  background: #000;
 }
 
 .nav-center {
@@ -1328,18 +1468,19 @@ body {
 
 /* Simple interaction state */
 .nav-item[data-active="true"] span {
-  color: #111827;
+  color: #000;
   font-weight: 600;
 }
 
 .nav-item[data-active="true"] .nav-icon {
-  border-color: #111827;
+  border-color: #000;
+  border-radius: 12px;
 }
 
 /* Responsive fallbacks for desktops */
 @media (max-height: 720px) {
   .app {
-    height: 700px;
+    height: 110vh;
   }
 }
 
